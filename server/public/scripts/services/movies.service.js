@@ -41,6 +41,7 @@ function($http) {
     console.log(movieAdd)
       $http.post('/movies', movieAdd)
       .then(function(response){
+        self.getMovies(response);
         // console.log('added')
        
       })
@@ -61,31 +62,8 @@ function($http) {
             console.log('error')
         })
     }
+    
     self.getMovies();
-//     self.updateListing = function(listing) {
-      
-//       console.log("called changelisting", listing)
-//       let listId = listing.id;
-//         $http({
-//             method: 'PUT',
-//             url: '/listings/' + listId,
-//             data: {cost: listing.cost,
-//                     sqft: listing.sqft,
-//                     type: listing.type,
-//                      address: listing.address,
-//                      city: listing.city,
-//                      state: listing.state}
-//         }).then(function(response){
-            
-//             self.getListings(response);
-//             console.log(response);
-//         }).catch(function(err){
-//             console.log('error', err)
-//         })
-    
-//     };
-    
-    
       
     
 
