@@ -2,19 +2,19 @@
         <input type="text" ng-model="search" placeholder="Movie Title">
       </md-input-container>
       <md-button ng-click="vm.getMoviesApi(search); search = null;">Search</md-button>
-<md-container class="md-padding" layout-xs="column" layout="row">
+<!-- <md-container class="md-padding" layout-xs="column" layout="row">
 
 <div flex-xs flex-gt-xs="50" layout="column">
     <div layout="row"> </div>
 <div layout-margin="3" layout="row" layout="column" flex="20" ng-repeat="movie in vm.movies.list">
 <!-- {{movie.poster_path}} -->
-<div layout="row" >
+<!-- <div layout="row" >
 <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">{{movie.title}}</span>
             <!-- <span class="md-subhead">Large</span> -->
-          </md-card-title-text>
+          <!-- </md-card-title-text>
           <md-card-title-media>
             <div class="card-media">
             <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}"> </div>
@@ -26,8 +26,26 @@
         </md-card-actions>
       </md-card>
     </div>
+  </md-container>
+</div> --> 
+<md-container class="md-padding" layout-xs="column" layout="row">
 
-</div>
+    <div layout-margin="3" layout="row" layout="column" flex="20" ng-repeat="movie in vm.movies.list">
+    <!-- {{movie.poster_path}} -->
+    
+    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            
+                
+                 <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+              </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="vm.addMovie(movie)">favorite</md-button>
+              <md-button>rate</md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+    
+  
 <div flex="20" layout="column"></div>
 </div>
-</md-container>

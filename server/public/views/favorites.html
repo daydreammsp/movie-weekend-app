@@ -1,7 +1,29 @@
 
-<div ng-repeat="fav in vm.newMovies.list">
+<!-- <div ng-repeat="fav in vm.newMovies.list">
 
      <img src="http://image.tmdb.org/t/p/w185/{{fav.url}}">
       <md-button ng-click="vm.deleteMovie(fav)">Delete</md-button>
-</div>
+</div> -->
 
+<md-container class="md-padding" layout-xs="column" layout="row">
+
+        <div layout-margin="3" layout="row" layout="column" flex="20" ng-repeat="fav in vm.newMovies.list">
+        <!-- {{movie.poster_path}} -->
+        
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                
+                    
+                     <img src="http://image.tmdb.org/t/p/w185/{{fav.url}}"> 
+                  </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                  <md-button ng-click="vm.deleteMovie(fav)">Delete</md-button>
+                  <md-button>rate</md-button>
+                </md-card-actions>
+              </md-card>
+            </div>
+        
+      
+        <div flex="20" layout="column"></div>
+        </div>
+        </md-container>
