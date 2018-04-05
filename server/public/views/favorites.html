@@ -1,0 +1,5 @@
+<div ng-repeat="fav in vm.newMovies.list">
+
+<img src="http://image.tmdb.org/t/p/w185/{{fav.url}}">
+<md-button ng-click="vm.deleteMovie(fav)">Delete</md-button>
+</div>

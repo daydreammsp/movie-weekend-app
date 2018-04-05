@@ -10,10 +10,10 @@ myApp.config(function($routeProvider) {
         templateUrl: '/views/movies.html',
         controller: 'MovieController as vm'
       })
-    //   .when('/buy', {
-    //     templateUrl: '/views/buy.html',
-    //     controller: 'BuyController as vm'
-    //   })
+      .when('/favorites', {
+        templateUrl: '/views/favorites.html',
+        controller: 'FavoritesController as vm'
+      })
     //   .when('/rent', {
     //     templateUrl: '/views/rent.html',
     //     controller: 'RentController as vm'

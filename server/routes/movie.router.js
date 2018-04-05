@@ -26,5 +26,17 @@ router.get('/', (req, res) => {
         });
       });
     
+      router.delete('/:id', (req, res) => {
+        let movieId = req.params.id;
+        console.log('delete', movieId)
+        const queryText = 'DELETE FROM movies WHERE id = $1;'
+        pool.query(queryText, [movieId])
+        .then( (response) => {
+          console.log(response);
+          res.sendStatus(201);
+        }).catch( (error) => {
+          console.log('error on insert', error)
+        });
+      });
 
 module.exports = router

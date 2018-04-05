@@ -4,14 +4,14 @@ function($http) {
     let self = this;
     self.newMovies = { list : []};
     self.movies = { list : [] };
-    self.search;
+  
     
     
     self.getMovies = function() {
         $http.get('/movies')
         .then(function(response){
           self.newMovies.list = response.data;
-          // console.log(self.newMovies.list);
+          console.log(self.newMovies.list);
         })
       }
 
@@ -48,18 +48,20 @@ function($http) {
         console.log(error);
       });
   }
+  
 
-//   self.deleteListing = function(listing) {
-//       let listId = listing.id;
-//       $http.delete('/listings/' + listId)
-//        .then(function(response){
-//             self.getListings(response);
-//         })
-//         .catch(function(err){
-//             console.log('error')
-//         })
-//     }
-
+  self.deleteMovie = function(movie) {
+    console.log(movie);
+      let movieId = movie.id;
+      $http.delete('/movies/' + movieId)
+       .then(function(response){
+            self.getMovies(response);
+        })
+        .catch(function(err){
+            console.log('error')
+        })
+    }
+    self.getMovies();
 //     self.updateListing = function(listing) {
       
 //       console.log("called changelisting", listing)
