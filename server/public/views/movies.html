@@ -6,7 +6,7 @@
 
   <md-container class="md-padding" layout-xs="column" layout="row" layout-align="center" layout-wrap>
 
-    <div layout-margin="3" layout="row" layout="column" flex="25" ng-repeat="movie in vm.movies.list">
+    <div class="background2" layout-margin="3" layout="row" layout="column" flex="25" ng-repeat="movie in vm.movies.list">
         <!-- {{movie.poster_path}} -->
         
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-show="!edit">

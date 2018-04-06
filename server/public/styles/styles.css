@@ -1,6 +1,10 @@
 .rate{
     color: red;
 }
-.background{
-    background-color: rgb(255, 0, 212);
+.background:hover{
+    background-color: rgba(255, 0, 212, 0.116);
+}
+
+.background2:hover{
+    background-color: rgba(245, 143, 174, 0.507);
 }
