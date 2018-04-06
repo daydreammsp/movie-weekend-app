@@ -8,10 +8,10 @@
 
   <md-container class="md-padding" layout-xs="column" layout="row" layout-align="center" layout-wrap>
 
-    <div layout-margin="3" layout="row" layout="column" flex="30" ng-repeat="movie in vm.movies.list">
+    <div layout-margin="3" layout="row" layout="column" flex="25" ng-repeat="movie in vm.movies.list">
         <!-- {{movie.poster_path}} -->
         
-        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-show="!edit">
                 
                     <md-card-title-media>
                      <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
@@ -19,7 +19,7 @@
                 
                 <md-card-actions layout="row" layout-align="end center">
                   <div layout="column">
-                    <md-button ng-click="vm.addMovie(movie)">favorite</md-button>
+                    <md-button ng-click="vm.addMovie(movie); edit = true" ng-show="!edit">favorite</md-button>
                 <!-- <div>{{movie.genre_ids}}</div> -->
                 
                 <div flex layout-margin="3" >{{movie.release_date | date : format : timezone}}</div>
