@@ -72,9 +72,10 @@ function($http) {
       .catch(function(error){
         console.log(error);
       });
-  
+    }
 
   self.deleteMovie = function(movie) {
+    console.log('click');
     console.log(movie);
       let movieId = movie.id;
       $http.delete('/movies/' + movieId)
@@ -85,7 +86,8 @@ function($http) {
             console.log('error')
         })
     }
-  }
+  
+
     self.getMovies();
     self.getUsers();
       
