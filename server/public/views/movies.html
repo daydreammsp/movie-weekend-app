@@ -4,8 +4,6 @@
       </md-input-container>
       <md-button ng-click="vm.getMoviesApi(search); search = null;">Search</md-button>
 
-
-
   <md-container class="md-padding" layout-xs="column" layout="row" layout-align="center" layout-wrap>
 
     <div layout-margin="3" layout="row" layout="column" flex="25" ng-repeat="movie in vm.movies.list">
@@ -22,9 +20,11 @@
                     <md-button ng-click="vm.addMovie(movie); edit = true" ng-show="!edit">favorite</md-button>
                 <!-- <div>{{movie.genre_ids}}</div> -->
                 
-                <div flex layout-margin="3" >{{movie.release_date | date : format : timezone}}</div>
+                <span flex layout-margin="3" >{{movie.release_date | date : format : timezone}} <strong>Rating</strong><span class="rate">{{movie.vote_average}}/10</span></span>
               
                 <div layout-margin="3" flex>{{movie.overview}}</div>
+              
+                
                   </div>
                   <!-- <md-button>rate</md-button> -->
                 </md-card-actions>
