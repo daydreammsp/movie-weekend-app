@@ -19,6 +19,7 @@ function($http) {
         console.log('search query', search)
         $http.get('https://api.themoviedb.org/3/search/movie?api_key=82a12a54b5388a78460f43520ffc035e&query='+ search +'&language=en-US&page=1&include_adult=false')
         .then(function(response){
+          console.log(response.data)
           self.movies.list = response.data.results;
 
           console.log(self.movies.list);
@@ -36,7 +37,7 @@ function($http) {
       // self.getListings();
     //   AIzaSyBIvNVDWZzW9WoaOK78MmaOhC-R0X2doTM
     // https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=YOUR_API_KEY
-
+    // https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=AIzaSyBIvNVDWZzW9WoaOK78MmaOhC-R0X2doTM
 
   self.addMovie = function(movie){
     console.log('added',movie)
@@ -92,5 +93,82 @@ function($http) {
     self.getUsers();
       
     
-
+  //   "genres": [
+  //     {
+  //         "id": 28,
+  //         "name": "Action"
+  //     },
+  //     {
+  //         "id": 12,
+  //         "name": "Adventure"
+  //     },
+  //     {
+  //         "id": 16,
+  //         "name": "Animation"
+  //     },
+  //     {
+  //         "id": 35,
+  //         "name": "Comedy"
+  //     },
+  //     {
+  //         "id": 80,
+  //         "name": "Crime"
+  //     },
+  //     {
+  //         "id": 99,
+  //         "name": "Documentary"
+  //     },
+  //     {
+  //         "id": 18,
+  //         "name": "Drama"
+  //     },
+  //     {
+  //         "id": 10751,
+  //         "name": "Family"
+  //     },
+  //     {
+  //         "id": 14,
+  //         "name": "Fantasy"
+  //     },
+  //     {
+  //         "id": 36,
+  //         "name": "History"
+  //     },
+  //     {
+  //         "id": 27,
+  //         "name": "Horror"
+  //     },
+  //     {
+  //         "id": 10402,
+  //         "name": "Music"
+  //     },
+  //     {
+  //         "id": 9648,
+  //         "name": "Mystery"
+  //     },
+  //     {
+  //         "id": 10749,
+  //         "name": "Romance"
+  //     },
+  //     {
+  //         "id": 878,
+  //         "name": "Science Fiction"
+  //     },
+  //     {
+  //         "id": 10770,
+  //         "name": "TV Movie"
+  //     },
+  //     {
+  //         "id": 53,
+  //         "name": "Thriller"
+  //     },
+  //     {
+  //         "id": 10752,
+  //         "name": "War"
+  //     },
+  //     {
+  //         "id": 37,
+  //         "name": "Western"
+  //     }
+  // ]
 }])
