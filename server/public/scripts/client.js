@@ -14,11 +14,11 @@ myApp.config(function($routeProvider) {
         templateUrl: '/views/favorites.html',
         controller: 'FavoritesController as vm'
       })
-    //   .when('/rent', {
-    //     templateUrl: '/views/rent.html',
-    //     controller: 'RentController as vm'
-    //   })
+      .when('/users', {
+        templateUrl: '/views/users.html',
+        controller: 'UsersController as vm'
+      })
       .otherwise(
-        { redirectTo: '/movies'}
+        { redirectTo: '/users'}
       )
   });

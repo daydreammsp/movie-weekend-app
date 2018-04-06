@@ -4,7 +4,7 @@ function($http) {
     let self = this;
     self.newMovies = { list : []};
     self.movies = { list : [] };
-  
+    self.users = { list : [] };
     
     
     self.getMovies = function() {
@@ -23,6 +23,13 @@ function($http) {
 
           console.log(self.movies.list);
          
+        })
+      }
+      self.getUsers = function() {
+        $http.get('/user')
+        .then(function(response){
+          self.users.list = response.data;
+          console.log(self.users.list);
         })
       }
       // self.getMoviesApi();
@@ -49,6 +56,22 @@ function($http) {
         console.log(error);
       });
   }
+
+  self.addUser = function(user){
+    console.log('added', user)
+    let username = {
+        username: user
+    }
+    console.log(username)
+      $http.post('/user', username)
+      .then(function(response){
+        // self.getMovies(response);
+        // console.log('added')
+       
+      })
+      .catch(function(error){
+        console.log(error);
+      });
   
 
   self.deleteMovie = function(movie) {
@@ -62,8 +85,9 @@ function($http) {
             console.log('error')
         })
     }
-    
+  }
     self.getMovies();
+    self.getUsers();
       
     
 

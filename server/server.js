@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const movieRouter = require('./routes/movie.router');
-// const shipRouter = require('./routes/ships.router');
+const userRouter = require('./routes/user.router');
 
 
 
@@ -14,6 +14,7 @@ app.use(express.static('server/public'));
 app.use(bodyParser.json());
 
 app.use('/movies', movieRouter);
+app.use('/user', userRouter);
 // app.use('/ships', shipRouter);
 
 app.listen(PORT, () => {
