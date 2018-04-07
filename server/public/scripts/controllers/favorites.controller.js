@@ -13,9 +13,7 @@ self.getMovies = moviesService.getMovies;
  self.genres = moviesService.genres
  self.genreNames = moviesService.genreNames
 //  self.updateMovie = moviesService.updateMovie;
-//  self.showGenres = function(){
-//    console.log(self.genres)
-//  }
- 
-// self.showGenres();
+
+
+
 }]);

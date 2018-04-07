@@ -43,7 +43,7 @@ function($http) {
     // https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=AIzaSyBIvNVDWZzW9WoaOK78MmaOhC-R0X2doTM
 
   self.addMovie = function(movie){
-    
+    self.genreNames = [];
     let movieAdd = {
         picture: movie.title,
         url: movie.poster_path,
@@ -60,7 +60,7 @@ function($http) {
     self.convertGenres(x);
     genreAdd = {
       url: movie.poster_path,
-      genre:  self.genreNames
+      genre:  self.genreNames[0]
     }
     $http.post('/genre', genreAdd)
       .then(function(response){

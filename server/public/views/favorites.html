@@ -1,9 +1,9 @@
 <div >
  
     <ng-input-container>
-        <select name="repeatSelect" id="repeatSelect" ng-model="genres">
-            <option ng-repeat="option in vm.genreNames" value="{{option}}">
-              {{option}}</option>
+        <select name="repeatSelect" id="repeatSelect" ng-model="genre">
+            <option ng-repeat="option in vm.genres.list" value="{{option}}">
+              {{option.genre}}</option>
           </select>
     </ng-input-container>
 </div>
