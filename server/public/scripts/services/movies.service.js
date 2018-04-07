@@ -5,7 +5,7 @@ function($http) {
     self.newMovies = { list : []};
     self.movies = { list : [] };
     self.genres = { list : [] };
-    self.genreNames = {list : [] };
+    self.genreNames = [];
     self.genreAdd;
     
 
@@ -57,7 +57,11 @@ function($http) {
     // console.log(movieAdd)
     // console.log(genreAdd.genre)
     let x = genreAdd.genre
-    self.convertGenres(x)
+    self.convertGenres(x);
+    genreAdd = {
+      url: movie.poster_path,
+      genre:  self.genreNames
+    }
     $http.post('/genre', genreAdd)
       .then(function(response){
         self.getGenres(response);
@@ -112,6 +116,7 @@ function($http) {
 
     self.convertGenres = function(types){
       // console.log(types);
+      let genreNames = self.genreNames
       for(let type of types){
         console.log(type);
         switch(type) {
@@ -175,7 +180,8 @@ function($http) {
           default:
           type = "movie genre";
       }
-      console.log(type);
+      genreNames.push(type);
+      console.log(genreNames);
       }
     }
     self.getMovies();
