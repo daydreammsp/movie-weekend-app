@@ -1,17 +1,19 @@
 myApp.service('MoviesService',  ['$http',
 function($http) {
-    console.log('Movies Service is Loaded');
+    // console.log('Movies Service is Loaded');
     let self = this;
     self.newMovies = { list : []};
     self.movies = { list : [] };
-    self.users = { list : [] };
+    self.genres = { list : [] };
+    self.genreNames = {list : [] };
+    self.genreAdd;
     
-    
+
     self.getMovies = function() {
         $http.get('/movies')
         .then(function(response){
           self.newMovies.list = response.data;
-          console.log(self.newMovies.list);
+          // console.log(self.newMovies.list);
         })
       }
 
@@ -19,18 +21,19 @@ function($http) {
         console.log('search query', search)
         $http.get('https://api.themoviedb.org/3/search/movie?api_key=82a12a54b5388a78460f43520ffc035e&query='+ search +'&language=en-US&page=1&include_adult=false')
         .then(function(response){
-          console.log(response.data)
+          // console.log(response.data)
           self.movies.list = response.data.results;
 
-          console.log(self.movies.list);
+          // console.log(self.movies.list);
          
         })
       }
-      self.getUsers = function() {
-        $http.get('/user')
+      self.getGenres = function() {
+        $http.get('/genre')
         .then(function(response){
-          self.users.list = response.data;
-          console.log(self.users.list);
+          self.genres.list = response.data;
+          console.log(self.genres.list);
+          // self.convertGenres();
         })
       }
       // self.getMoviesApi();
@@ -40,13 +43,30 @@ function($http) {
     // https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=AIzaSyBIvNVDWZzW9WoaOK78MmaOhC-R0X2doTM
 
   self.addMovie = function(movie){
-    console.log('added',movie)
+    
     let movieAdd = {
         picture: movie.title,
         url: movie.poster_path,
         rating: true
     }
-    console.log(movieAdd)
+    let genreAdd = {
+      url: movie.poster_path,
+      genre: movie.genre_ids
+    }
+    // self.convertGenres();
+    // console.log(movieAdd)
+    // console.log(genreAdd.genre)
+    let x = genreAdd.genre
+    self.convertGenres(x)
+    $http.post('/genre', genreAdd)
+      .then(function(response){
+        self.getGenres(response);
+        // console.log('added')
+       
+      })
+      .catch(function(error){
+        console.log(error);
+      });
       $http.post('/movies', movieAdd)
       .then(function(response){
         self.getMovies(response);
@@ -58,22 +78,23 @@ function($http) {
       });
   }
 
-  self.addUser = function(user){
-    console.log('added', user)
-    let username = {
-        username: user
-    }
-    console.log(username)
-      $http.post('/user', username)
-      .then(function(response){
-        // self.getMovies(response);
-        // console.log('added')
+  // self.addGenre = function(genre){
+  //   console.log('added', genre)
+  //   let genre = {
+  //       url: url,
+  //       genre: genre
+  //   }
+  //   console.log(genre)
+  //     $http.post('/genre', genre)
+  //     .then(function(response){
+  //       // self.getMovies(response);
+  //       console.log('added', response)
        
-      })
-      .catch(function(error){
-        console.log(error);
-      });
-    }
+  //     })
+  //     .catch(function(error){
+  //       console.log(error);
+  //     });
+  //   }
 
   self.deleteMovie = function(movie) {
     console.log('click');
@@ -89,9 +110,94 @@ function($http) {
     }
   
 
+    self.convertGenres = function(types){
+      // console.log(types);
+      for(let type of types){
+        console.log(type);
+        switch(type) {
+          case 28:
+              type = "Action";
+              break;
+          case 12:
+              type = "Adventure";
+              break;
+          case 16:
+              type = "Animation";
+              break;
+          case 35:
+              type = "Comedy";
+              break;
+          case 80:
+              type = "Crime";
+              break;
+          case 99:
+              type = "Documentary";
+              break;
+          case 18:
+              type = "Drama";
+              break;
+          case 10751:
+              type = "Family";
+              break;
+          case 14:
+              type = "Fantasy";
+              break;
+          case 36:
+              type = "History";
+              break;
+          case 27:
+              type = "Horror";
+              break;
+          case 10402:
+              type = "Music";
+              break;
+          case 9648:
+              type = "Mystery";
+              break;
+          case 10749:
+              type = "Romance";
+              break;
+          case 878:
+              type = "Science Fiction";
+              break;
+          case 10770:
+              type = "TV Movie";
+              break;
+          case 53:
+              type = "Thriller";
+              break;
+          case 10752:
+              type = "War";
+              break;
+          case 37:
+              type = "Western";
+              break;
+          default:
+          type = "movie genre";
+      }
+      console.log(type);
+      }
+    }
     self.getMovies();
-    self.getUsers();
-      
+    self.getGenres();
+    
+    // self.addGenre = function(genre){
+      //   console.log('added', genre)
+      //   let genre = {
+      //       url: genre.url,
+      //       genre: genre.genre
+      //   }
+      //   console.log(genre)
+      //     $http.post('/genre', genre)
+      //     .then(function(response){
+      //       // self.getMovies(response);
+      //       console.log('added', response)
+           
+      //     })
+      //     .catch(function(error){
+      //       console.log(error);
+      //     });
+      //   }
     
   //   "genres": [
   //     {

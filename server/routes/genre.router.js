@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 router.get('/', (req, res) => {
     console.log('connected to db users table')
-        let queryText = 'SELECT * FROM users ORDER BY id ASC;'  
+        let queryText = 'SELECT * FROM genres ORDER BY id ASC;'  
         pool.query(queryText).then( (result) => {
           console.log(result.rows);
           res.send(result.rows);
@@ -15,9 +15,9 @@ router.get('/', (req, res) => {
       });
 
       router.post('/', (req, res) => {
-        let user = req.body;
-        const queryText = 'INSERT INTO users (username) VALUES ($1);'
-        pool.query(queryText, [user.username])
+        let genre = req.body;
+        const queryText = 'INSERT INTO genres (url, genre) VALUES ($1, $2);'
+        pool.query(queryText, [genre.url, genre.genre])
         .then( (response) => {
           // console.log(response);
           res.sendStatus(201 );

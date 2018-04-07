@@ -1,3 +1,14 @@
+<div >
+ 
+    <ng-input-container>
+        <select name="repeatSelect" id="repeatSelect" ng-model="genres">
+            <option ng-repeat="option in vm.genreNames" value="{{option}}">
+              {{option}}</option>
+          </select>
+    </ng-input-container>
+</div>
+
+
 
 <md-container class="md-padding" layout-xs="column" layout="row" layout-align="center" layout-wrap>
 
