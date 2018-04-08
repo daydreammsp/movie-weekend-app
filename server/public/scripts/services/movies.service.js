@@ -139,6 +139,7 @@ function DialogController($scope, $mdDialog) {
             console.log('error')
         })
     }
+    
   
 
     self.convertGenres = function(types){

@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 router.get('/', (req, res) => {
     console.log('connected to db users table')
-        let queryText = 'SELECT DISTINCT genre FROM genres;'  
+        let queryText = 'SELECT DISTINCT genre FROM movies;'  
         pool.query(queryText).then( (result) => {
           console.log(result.rows);
           res.send(result.rows);
