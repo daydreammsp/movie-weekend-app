@@ -1,10 +1,10 @@
-<div >
+<div layout="row" >
  
-    <ng-input-container>
-        <select name="repeatSelect" id="repeatSelect" ng-model="genre">
-            <option ng-repeat="option in vm.genres.list" value="{{option}}">
-              {{option.genre}}</option>
-          </select>
+    <ng-input-container flex="30">
+        <md-select ng-model="option" placeholder="Select Genre">
+            <md-option ng-repeat="option in vm.genres.list" value="{{option}}">
+              {{option.genre}}</md-option>
+          </md-select>
     </ng-input-container>
 </div>
 
@@ -12,7 +12,7 @@
 
 <md-container class="md-padding" layout-xs="column" layout="row" layout-align="center" layout-wrap>
 
-        <div class="background" layout-align="center" layout-margin="3" layout="row" layout="column" flex="20"  ng-repeat="fav in vm.newMovies.list">
+        <div class="background" layout-align="center" layout-margin="3" layout="row" layout="column" flex="20"  ng-repeat="fav in vm.newMovies.list | filter : option">
         
         
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
