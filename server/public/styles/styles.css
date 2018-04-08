@@ -8,3 +8,6 @@
 .background2:hover{
     background-color: rgba(245, 143, 174, 0.507);
 }
+.date{
+    font-size: 15px;
+}
