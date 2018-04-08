@@ -8,17 +8,39 @@
     </ng-input-container>
 </div>
 
-
-
 <md-container class="md-padding" layout-xs="column" layout="row" layout-align="center" layout-wrap>
+
+        <div layout-margin="3" layout="row" layout="column" flex="25" ng-repeat="fav in vm.newMovies.list" ng-if="fav.genre == option">
+        
+        
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+               <img src="http://image.tmdb.org/t/p/w185/{{fav.url}}"> 
+                  </md-card-title-media>
+                </md-card-title>
+                <div layout="column">
+                <span class="date" ng-if="edit" flex layout-margin="3" >
+                    <strong>Released:</strong>{{fav.date | date : format : timezone}}<br> <strong>Rating</strong><span class="rate">{{fav.rating}}/10</span><br>
+                <strong>Genre:</strong>{{fav.genre}}</span>
+           
+                <div ng-if="edit" layout-margin="3" flex>{{fav.overview}}</div>
+            </div>
+                <md-card-actions layout="row" layout-align="end center">
+                  
+                  <md-button ng-click="vm.boomPopUp($event,fav)">Delete</md-button>
+                  <md-button ng-click="edit = !edit">Info</md-button>
+                </md-card-actions>
+              </md-card>
+            </div>
+        </md-container>
+
+
+<!-- <md-container class="md-padding" layout-xs="column" layout="row" layout-align="center" layout-wrap>
 
         <div class="background" layout-align="center" layout-margin="3" layout="row" layout="column" flex="20"  ng-repeat="fav in vm.newMovies.list" ng-if="fav.genre == option">
         
         
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-            <!-- /5OdUzXuAWraszDFaPi7jYKTV4HV.jpg -->
-            <!-- http://image.tmdb.org/t/p/w185//5OdUzXuAWraszDFaPi7jYKTV4HV.jpg -->
-                     <img src="http://image.tmdb.org/t/p/w185/{{fav.url}}"> 
+               <img src="http://image.tmdb.org/t/p/w185/{{fav.url}}"> 
                   </md-card-title-media>
                 </md-card-title>
                 <div layout="column">
@@ -34,4 +56,4 @@
                 </md-card-actions>
               </md-card>
             </div>
-        </md-container>
+        </md-container> -->
