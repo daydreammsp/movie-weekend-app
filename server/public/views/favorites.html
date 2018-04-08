@@ -21,6 +21,9 @@
                      <img src="http://image.tmdb.org/t/p/w185/{{fav.url}}"> 
                   </md-card-title-media>
                 </md-card-title>
+                <span flex layout-margin="3" >{{fav.date | date : format : timezone}} <strong>Rating</strong><span class="rate">{{fav.rating}}/10</span></span>
+              
+                <div layout-margin="3" flex>{{fav.overview}}</div>
                 <md-card-actions layout="row" layout-align="end center">
                   
                   <md-button ng-click="vm.deleteMovie(fav)">Delete</md-button>
