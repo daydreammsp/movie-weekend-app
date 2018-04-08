@@ -2,7 +2,7 @@
  
     <ng-input-container flex="30">
         <md-select ng-model="option" placeholder="Select Genre">
-            <md-option ng-repeat="option in vm.genres.list" value="{{option}}">
+            <md-option ng-repeat="option in vm.genres.list" ng-value="option.genre">
               {{option.genre}}</md-option>
           </md-select>
     </ng-input-container>
@@ -12,7 +12,7 @@
 
 <md-container class="md-padding" layout-xs="column" layout="row" layout-align="center" layout-wrap>
 
-        <div class="background" layout-align="center" layout-margin="3" layout="row" layout="column" flex="20"  ng-repeat="fav in vm.newMovies.list | filter : option">
+        <div class="background" layout-align="center" layout-margin="3" layout="row" layout="column" flex="20"  ng-repeat="fav in vm.newMovies.list" ng-show="fav.genre == option">
         
         
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
@@ -21,13 +21,16 @@
                      <img src="http://image.tmdb.org/t/p/w185/{{fav.url}}"> 
                   </md-card-title-media>
                 </md-card-title>
-                <span flex layout-margin="3" >{{fav.date | date : format : timezone}} <strong>Rating</strong><span class="rate">{{fav.rating}}/10</span></span>
-              
-                <div layout-margin="3" flex>{{fav.overview}}</div>
+                <div layout="column">
+                <span ng-if="edit" flex layout-margin="3" >{{fav.date | date : format : timezone}} <strong>Rating</strong><span class="rate">{{fav.rating}}/10</span></span>
+            <span ng-if="edit" flex layout-margin="3" >{{fav.genre}}</span>
+                <div ng-if="edit" layout-margin="3" flex>{{fav.overview}}</div>
+            </div>
                 <md-card-actions layout="row" layout-align="end center">
                   
                   <md-button ng-click="vm.deleteMovie(fav)">Delete</md-button>
                   <md-button ng-click="vm.boomPopUp($event)">Boom</md-button>
+                  <md-button ng-click="edit = !edit">Info</md-button>
                 </md-card-actions>
               </md-card>
             </div>
