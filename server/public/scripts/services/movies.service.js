@@ -134,6 +134,7 @@ function DialogController($scope, $mdDialog) {
       $http.delete('/movies/' + movieId)
        .then(function(response){
             self.getMovies(response);
+            self.getGenres();
         })
         .catch(function(err){
             console.log('error')
