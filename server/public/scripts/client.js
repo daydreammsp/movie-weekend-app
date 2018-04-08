@@ -15,6 +15,10 @@ myApp.config(function($routeProvider) {
         templateUrl: '/views/favorites.html',
         controller: 'FavoritesController as vm'
       })
+      .when('/allFavorites', {
+        templateUrl: '/views/allFavorites.html',
+        controller: 'AllFavController as vm'
+      })
      
       .otherwise(
         { redirectTo: '/movies'}
