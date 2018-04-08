@@ -44,11 +44,7 @@ function($http,$mdDialog) {
 
   self.addMovie = function(movie){
     self.genreNames = [];
-    let movieAdd = {
-        picture: movie.title,
-        url: movie.poster_path,
-        rating: true
-    }
+    
     let genreAdd = {
       url: movie.poster_path,
       genre: movie.genre_ids
@@ -62,6 +58,14 @@ function($http,$mdDialog) {
       url: movie.poster_path,
       genre:  self.genreNames[0]
     }
+    let movieAdd = {
+      title: movie.title,
+      genre:  self.genreNames[0],
+      date: movie.release_date,
+      rating: movie.vote_average,
+      url: movie.poster_path,
+      overview: movie.overview
+  }
     $http.post('/genre', genreAdd)
       .then(function(response){
         self.getGenres(response);
