@@ -1,5 +1,5 @@
-myApp.service('MoviesService',  ['$http',
-function($http) {
+myApp.service('MoviesService',  ['$http','$mdDialog',
+function($http,$mdDialog) {
     // console.log('Movies Service is Loaded');
     let self = this;
     self.newMovies = { list : []};
@@ -82,6 +82,37 @@ function($http) {
       });
   }
 
+  self.boomPopUp = function (ev) {
+    console.log('deleting')
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+            .title('Are You Sure')
+            .textContent('this is a delete')
+            .ariaLabel('shoes')
+            .targetEvent(ev)
+            .ok('Please do it!')
+            .cancel('Sounds like a scam');
+
+    $mdDialog.show(confirm).then(function() {
+        console.log('deleted shoes', );
+        // $http({
+        //     method: 'DELETE',
+        //     url: `/crew/${}`,
+        // }).then((response) => {
+        //     self.getCrew();
+        //     self.getShips();
+        // })
+        // .catch((error) => {
+        //     console.log('error making request', error);
+        //     alert('Something went wrong! Check the server.');
+        // });
+        
+    }, function() {
+        console.log('kept your shoes.')
+    });
+
+    
+}
   // self.addGenre = function(genre){
   //   console.log('added', genre)
   //   let genre = {

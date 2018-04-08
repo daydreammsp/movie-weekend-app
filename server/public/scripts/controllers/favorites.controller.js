@@ -12,5 +12,5 @@ self.getMovies = moviesService.getMovies;
  self.deleteMovie = moviesService.deleteMovie;
  self.genres = moviesService.genres
  self.genreNames = moviesService.genreNames
- 
+ self.boomPopUp = moviesService.boomPopUp
 }]);
