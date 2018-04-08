@@ -14,10 +14,7 @@ myApp.config(function($routeProvider) {
         templateUrl: '/views/favorites.html',
         controller: 'FavoritesController as vm'
       })
-      // .when('/nav', {
-      //   templateUrl: '/views/templates/nav.html',
-      //   controller: 'NavController as vm'
-      // })
+     
       .otherwise(
         { redirectTo: '/movies'}
       )

@@ -85,51 +85,43 @@ function($http,$mdDialog) {
   self.boomPopUp = function (ev) {
     console.log('deleting')
     // Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.confirm()
-            .title('Are You Sure')
-            .textContent('this is a delete')
-            .ariaLabel('shoes')
-            .targetEvent(ev)
-            .ok('Please do it!')
-            .cancel('Sounds like a scam');
+    // var confirm = $mdDialog.confirm()
+    //         .title('Are You Sure')
+    //         .textContent('this is a delete')
+    //         .ariaLabel('shoes')
+    //         .targetEvent(ev)
+    //         .ok('Please do it!')
+    //         .cancel('Sounds like a scam');
 
-    $mdDialog.show(confirm).then(function() {
-        console.log('deleted shoes', );
-        // $http({
-        //     method: 'DELETE',
-        //     url: `/crew/${}`,
-        // }).then((response) => {
-        //     self.getCrew();
-        //     self.getShips();
-        // })
-        // .catch((error) => {
-        //     console.log('error making request', error);
-        //     alert('Something went wrong! Check the server.');
-        // });
-        
-    }, function() {
-        console.log('kept your shoes.')
-    });
+            $mdDialog.show({
+              controller: DialogController,
+              templateUrl: './views/popUp.html',
+              parent: angular.element(document.body),
+              targetEvent: ev,
+              clickOutsideToClose:true,
+              fullscreen: self.customFullscreen // Only for -xs, -sm breakpoints.
+            })
+            .then(function(answer) {
+              self.status = 'You said the information was "' + answer + '".';
+            }, function() {
+              self.status = 'You cancelled the dialog.';
+            });
 
     
 }
-  // self.addGenre = function(genre){
-  //   console.log('added', genre)
-  //   let genre = {
-  //       url: url,
-  //       genre: genre
-  //   }
-  //   console.log(genre)
-  //     $http.post('/genre', genre)
-  //     .then(function(response){
-  //       // self.getMovies(response);
-  //       console.log('added', response)
-       
-  //     })
-  //     .catch(function(error){
-  //       console.log(error);
-  //     });
-  //   }
+function DialogController($scope, $mdDialog) {
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
+
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+
+  $scope.answer = function(answer) {
+    $mdDialog.hide(answer);
+  };
+}
 
   self.deleteMovie = function(movie) {
     console.log('click');
@@ -218,100 +210,7 @@ function($http,$mdDialog) {
     self.getMovies();
     self.getGenres();
     
-    // self.addGenre = function(genre){
-      //   console.log('added', genre)
-      //   let genre = {
-      //       url: genre.url,
-      //       genre: genre.genre
-      //   }
-      //   console.log(genre)
-      //     $http.post('/genre', genre)
-      //     .then(function(response){
-      //       // self.getMovies(response);
-      //       console.log('added', response)
-           
-      //     })
-      //     .catch(function(error){
-      //       console.log(error);
-      //     });
-      //   }
     
-  //   "genres": [
-  //     {
-  //         "id": 28,
-  //         "name": "Action"
-  //     },
-  //     {
-  //         "id": 12,
-  //         "name": "Adventure"
-  //     },
-  //     {
-  //         "id": 16,
-  //         "name": "Animation"
-  //     },
-  //     {
-  //         "id": 35,
-  //         "name": "Comedy"
-  //     },
-  //     {
-  //         "id": 80,
-  //         "name": "Crime"
-  //     },
-  //     {
-  //         "id": 99,
-  //         "name": "Documentary"
-  //     },
-  //     {
-  //         "id": 18,
-  //         "name": "Drama"
-  //     },
-  //     {
-  //         "id": 10751,
-  //         "name": "Family"
-  //     },
-  //     {
-  //         "id": 14,
-  //         "name": "Fantasy"
-  //     },
-  //     {
-  //         "id": 36,
-  //         "name": "History"
-  //     },
-  //     {
-  //         "id": 27,
-  //         "name": "Horror"
-  //     },
-  //     {
-  //         "id": 10402,
-  //         "name": "Music"
-  //     },
-  //     {
-  //         "id": 9648,
-  //         "name": "Mystery"
-  //     },
-  //     {
-  //         "id": 10749,
-  //         "name": "Romance"
-  //     },
-  //     {
-  //         "id": 878,
-  //         "name": "Science Fiction"
-  //     },
-  //     {
-  //         "id": 10770,
-  //         "name": "TV Movie"
-  //     },
-  //     {
-  //         "id": 53,
-  //         "name": "Thriller"
-  //     },
-  //     {
-  //         "id": 10752,
-  //         "name": "War"
-  //     },
-  //     {
-  //         "id": 37,
-  //         "name": "Western"
-  //     }
-  // ]
+    
+  
 }])
