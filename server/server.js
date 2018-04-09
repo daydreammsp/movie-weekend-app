@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const movieRouter = require('./routes/movie.router');
 const genreRouter = require('./routes/genre.router');
+const chartRouter = require('./routes/chart.router');
 
 
 
@@ -15,7 +16,7 @@ app.use(bodyParser.json());
 
 app.use('/movies', movieRouter);
 app.use('/genre', genreRouter);
-// app.use('/ships', shipRouter);
+app.use('/chart', chartRouter);
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
