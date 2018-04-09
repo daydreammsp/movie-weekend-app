@@ -13,27 +13,30 @@ self.getMovies = moviesService.getMovies;
  self.genres = moviesService.genres
  self.genreNames = moviesService.genreNames
  self.boomPopUp = moviesService.boomPopUp;
-let charInfo = [];
+let chartInfo = [];
+let chartName =[];
  self.getChart = function() {
      chartInfo = [];
+     chartName =[];
     $http.get('/chart')
     .then(function(response){
       chartReturn = response.data;
       for(let num of chartReturn){
           chartInfo.push(num.count);
-        
+          chartName.push(num.genre);
       }
+      
     })
 
   }
   self.getChart();
-console.log(chartInfo);
+console.log(chartName);
  let ctx = document.getElementById("myChart");
 
 let myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["Horror", "Fantasy", "Comedy", "Science Fiction", "Drama", "Action", "Crime", "Adventure"],
+        labels: chartName,
         datasets: [{
             label: 'Historical Favorites',
             data: chartInfo,
@@ -43,9 +46,21 @@ let myChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
                 'rgba(255, 159, 64, 0.2)'
             ],
             borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
                 'rgba(255,99,132,1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
