@@ -25,10 +25,10 @@ let chartName =[];
           chartInfo.push(num.count);
           chartName.push(num.genre);
       }
-      
     })
 
-  }
+}
+//uploading to heroku
   self.getChart();
 console.log(chartName);
  let ctx = document.getElementById("myChart");
