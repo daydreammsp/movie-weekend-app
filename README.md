@@ -1,4 +1,5 @@
-# movie-weekend-app
+# Movie Collection with themoviedb.org API
+The app searches for movies based on title and retrieves all related movies and information. The app was made with Angularjs, postgreSQL, and themoviedb.org API. The app also includes Angularjs Material for styling. Postman was used to sandbox and set up routes for the API.
 
 
 Database table
